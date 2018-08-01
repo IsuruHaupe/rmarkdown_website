@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Fantasio</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="gettingStarted.html">Getting Started</a>
+</li>
+<li>
+  <a href="steps.html">Fantasio steps</a>
+</li>
+<li>
+  <a href="references.html">Reference</a>
+</li>
+<li>
+  <a href="https://github.com/genostats/FEstim">GitHub</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="getting-started" class="section level2">
+<h2>1. Getting started</h2>
+<p>The first thing you should know is that the package Fantasio depends on package gaston, please make sure to have it installed.</p>
+<p>Please refer to the vignette of this package for more information.</p>
+<p>Since we explained the concept behind the package let’s make an usage example of it. For this we will use the data furnish by the package HGDP.</p>
+<div id="installation" class="section level3">
+<h3>1.1 Installation</h3>
+<p>First and faremost install the package with the following command :</p>
+<pre class="r"><code>install.packages(&quot;Fantasio&quot;)</code></pre>
+<p>After doing that we will need to run the following commands :</p>
+<pre class="r"><code>require(Fantasio) </code></pre>
+<pre><code>## Loading required package: Fantasio</code></pre>
+<pre><code>## Loading required package: parallel</code></pre>
+<pre><code>## Loading required package: gaston</code></pre>
+<pre><code>## Loading required package: Rcpp</code></pre>
+<pre><code>## Loading required package: RcppParallel</code></pre>
+<pre><code>## 
+## Attaching package: &#39;RcppParallel&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:Rcpp&#39;:
+## 
+##     LdFlags</code></pre>
+<pre><code>## Gaston set number of threads to 8. Use setThreadOptions() to modify this.</code></pre>
+<pre><code>## 
+## Attaching package: &#39;gaston&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:stats&#39;:
+## 
+##     sigma</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     cbind, rbind</code></pre>
+<pre class="r"><code>install.packages(&quot;HGDP.CEPH&quot;, repos=&quot;https://genostats.github.io/R/&quot;) </code></pre>
+<pre class="r"><code>require(HGDP.CEPH)</code></pre>
+<pre><code>## Loading required package: HGDP.CEPH</code></pre>
+</div>
+<div id="input-data-file" class="section level3">
+<h3>1.2 Input data file</h3>
+<p>From now on, we can use the package. Let us first create our bed.matrix object using the data file we load with the package HGDP.CEPH.</p>
+<pre class="r"><code>filepath &lt;-system.file(&quot;extdata&quot;, &quot;hgdp_ceph.bed&quot;, package=&quot;HGDP.CEPH&quot;)</code></pre>
+</div>
+<div id="creation-of-the-bed-matrix" class="section level3">
+<h3>1.3 Creation of the bed matrix</h3>
+<p>First create your bed.matrix object with this command :</p>
+<pre class="r"><code>x &lt;- read.bed.matrix(filepath)</code></pre>
+<pre><code>## Reading /ext/home/haupe/R/x86_64-pc-linux-gnu-library/3.4/HGDP.CEPH/extdata/hgdp_ceph.rds 
+## Reading /ext/home/haupe/R/x86_64-pc-linux-gnu-library/3.4/HGDP.CEPH/extdata/hgdp_ceph.bed</code></pre>
+<p>This command returns an updated ‘bed.matrix’ object (refer to gaston vignette for more informations and function documentation) :</p>
+<pre class="r"><code>x &lt;- set.stats(x)</code></pre>
+<pre><code>## ped stats and snps stats have been set. 
+## &#39;p&#39; has been set. 
+## &#39;mu&#39; and &#39;sigma&#39; have been set.</code></pre>
+<p>Here we only want to work on the Bedouin’s population, so we selected this population with the following command :</p>
+<pre class="r"><code>x.me &lt;- select.inds(x, population == &quot;Bedouin&quot;)</code></pre>
+<p>Please refer to the manual function of read.bed.matrix, set.stats and select.inds if needed (package gaston).</p>
+<p>Please make sure that you have atleast some individuals with a phenotype of 2 (sick), the package only computes HBD, FLOD scores and HFLOD scores with attained individuals :</p>
+<p>You can insure that your bed.matrix object is created and have the data needed with :</p>
+<pre class="r"><code>str(x.me)</code></pre>
+<pre><code>## Formal class &#39;bed.matrix&#39; [package &quot;gaston&quot;] with 8 slots
+##   ..@ ped                 :&#39;data.frame&#39;: 48 obs. of  34 variables:
+##   .. ..$ famid      : chr [1:48] &quot;HGDP00607&quot; &quot;HGDP00608&quot; &quot;HGDP00609&quot; &quot;HGDP00610&quot; ...
+##   .. ..$ id         : chr [1:48] &quot;HGDP00607&quot; &quot;HGDP00608&quot; &quot;HGDP00609&quot; &quot;HGDP00610&quot; ...
+##   .. ..$ father     : int [1:48] 0 0 0 0 0 0 0 0 0 0 ...
+##   .. ..$ mother     : int [1:48] 0 0 0 0 0 0 0 0 0 0 ...
+##   .. ..$ sex        : int [1:48] 2 1 1 1 1 2 2 2 2 1 ...
+##   .. ..$ pheno      : int [1:48] 1 1 1 1 1 1 1 1 1 1 ...
+##   .. ..$ population : Factor w/ 57 levels &quot;Adygei&quot;,&quot;Balochi&quot;,..: 10 10 10 10 10 10 10 10 10 10 ...
+##   .. ..$ region     : Factor w/ 27 levels &quot;Algeria (Mzab)&quot;,..: 12 12 12 12 12 12 12 12 12 12 ...
+##   .. ..$ region7    : Factor w/ 7 levels &quot;Africa&quot;,&quot;America&quot;,..: 6 6 6 6 6 6 6 6 6 6 ...
+##   .. ..$ H952       : logi [1:48] TRUE TRUE TRUE TRUE TRUE TRUE ...
+##   .. ..$ N0         : int [1:48] 56890 58576 58375 60261 53403 61180 54121 55903 61857 62151 ...
+##   .. ..$ N1         : int [1:48] 192705 189349 190265 186828 203585 183119 199168 196327 183012 180747 ...
+##   .. ..$ N2         : int [1:48] 394377 395838 394286 396726 386823 399508 390610 391298 398496 401153 ...
+##   .. ..$ NAs        : int [1:48] 301 510 1347 458 462 466 374 745 908 222 ...
+##   .. ..$ N0.x       : int [1:48] 1514 3766 4313 4160 4434 1476 1491 1540 2261 4107 ...
+##   .. ..$ N1.x       : int [1:48] 4936 0 0 0 0 4847 5354 5112 3243 0 ...
+##   .. ..$ N2.x       : int [1:48] 10017 12688 12136 12289 12008 10140 9599 9810 10953 12361 ...
+##   .. ..$ NAs.x      : int [1:48] 5 18 23 23 30 9 28 10 15 4 ...
+##   .. ..$ N0.y       : int [1:48] 0 0 0 0 0 0 0 0 0 0 ...
+##   .. ..$ N1.y       : int [1:48] 0 0 0 0 0 0 0 0 0 0 ...
+##   .. ..$ N2.y       : int [1:48] 0 10 10 10 10 0 0 0 0 10 ...
+##   .. ..$ NAs.y      : int [1:48] 10 0 0 0 0 10 10 10 10 0 ...
+##   .. ..$ N0.mt      : int [1:48] 4 9 19 5 9 9 4 5 19 1 ...
+##   .. ..$ N1.mt      : int [1:48] 0 0 0 0 0 0 0 0 0 0 ...
+##   .. ..$ N2.mt      : int [1:48] 157 143 141 157 153 151 157 153 140 161 ...
+##   .. ..$ NAs.mt     : int [1:48] 2 11 3 1 1 3 2 5 4 1 ...
+##   .. ..$ callrate   : num [1:48] 1 0.999 0.998 0.999 0.999 ...
+##   .. ..$ hz         : num [1:48] 0.299 0.294 0.296 0.29 0.316 ...
+##   .. ..$ callrate.x : num [1:48] 1 0.999 0.999 0.999 0.998 ...
+##   .. ..$ hz.x       : num [1:48] 0.3 0 0 0 0 ...
+##   .. ..$ callrate.y : num [1:48] 0 1 1 1 1 0 0 0 0 1 ...
+##   .. ..$ hz.y       : num [1:48] NaN 0 0 0 0 NaN NaN NaN NaN 0 ...
+##   .. ..$ callrate.mt: num [1:48] 0.988 0.933 0.982 0.994 0.994 ...
+##   .. ..$ hz.mt      : num [1:48] 0 0 0 0 0 0 0 0 0 0 ...
+##   ..@ snps                :&#39;data.frame&#39;: 660918 obs. of  17 variables:
+##   .. ..$ chr     : int [1:660918] 1 1 1 1 1 1 1 1 1 1 ...
+##   .. ..$ id      : chr [1:660918] &quot;rs3094315&quot; &quot;rs12562034&quot; &quot;rs3934834&quot; &quot;rs9442372&quot; ...
+##   .. ..$ dist    : num [1:660918] 0.0916 0.0992 0.4963 0.5039 0.508 ...
+##   .. ..$ pos     : int [1:660918] 742429 758311 995669 1008567 1011278 1011521 1011558 1020428 1021403 1038818 ...
+##   .. ..$ A1      : chr [1:660918] &quot;C&quot; &quot;A&quot; &quot;T&quot; &quot;A&quot; ...
+##   .. ..$ A2      : chr [1:660918] &quot;T&quot; &quot;G&quot; &quot;C&quot; &quot;G&quot; ...
+##   .. ..$ N0      : int [1:660918] 3 4 6 16 3 0 3 5 8 3 ...
+##   .. ..$ N1      : int [1:660918] 23 15 15 21 16 1 21 13 18 10 ...
+##   .. ..$ N2      : int [1:660918] 22 29 27 11 29 47 24 30 22 35 ...
+##   .. ..$ NAs     : int [1:660918] 0 0 0 0 0 0 0 0 0 0 ...
+##   .. ..$ N0.f    : int [1:660918] NA NA NA NA NA NA NA NA NA NA ...
+##   .. ..$ N1.f    : int [1:660918] NA NA NA NA NA NA NA NA NA NA ...
+##   .. ..$ N2.f    : int [1:660918] NA NA NA NA NA NA NA NA NA NA ...
+##   .. ..$ NAs.f   : int [1:660918] NA NA NA NA NA NA NA NA NA NA ...
+##   .. ..$ callrate: num [1:660918] 1 1 1 1 1 1 1 1 1 1 ...
+##   .. ..$ maf     : num [1:660918] 0.302 0.24 0.281 0.448 0.229 ...
+##   .. ..$ hz      : num [1:660918] 0.479 0.312 0.312 0.438 0.333 ...
+##   ..@ bed                 :&lt;externalptr&gt; 
+##   ..@ p                   : num [1:660918] 0.698 0.76 0.719 0.448 0.771 ...
+##   ..@ mu                  : num [1:660918] 1.396 1.521 1.438 0.896 1.542 ...
+##   ..@ sigma               : num [1:660918] 0.61 0.652 0.712 0.751 0.617 ...
+##   ..@ standardize_p       : logi FALSE
+##   ..@ standardize_mu_sigma: logi FALSE</code></pre>
+<p>This object contains two slots :</p>
+<ul>
+<li>ped : which gives you informations about all the individuals in the chip</li>
+<li>snps : which gives you informations about the snps itself</li>
+</ul>
+<p>More information in the vignette of the gaston package.</p>
+</div>
+</div>
+<div id="wrapper" class="section level2">
+<h2>2. Wrapper</h2>
+<p>We created a wrapper to make the usage of the package more simple.</p>
+<p>The following function calls two different functions : <code>createSegmentsListBySnps</code> and <code>createSegmentsListBySnps</code>. The first function <code>createSegmentsListBySnps</code> is used to create a list of segments though the genome. The second function <code>makeAllSubmapsBySnps</code> or <code>makeAllSubsmapsbyHotspots</code> is used to create submaps.</p>
+<p>The <code>segments</code> arguments accept only two options : Hotspots or Distance which correspond to the method implemented in the package.</p>
+<p>We implemented in the package Fantasio two differents methods in order to create the submaps :</p>
+<ul>
+<li><p>By “Hotspots” : *With this method we use a hotspots files to segment our genome, each segment contains several markers. Once this step is done we then loop over the segments and pick one marker randomly. By<br />
+doing this process we obtain a submap (a list of marker).</p></li>
+<li><p>By “Distance” : *With this method we use the gaps between markers to segment our data, each segment contains several<br />
+markers. We then create mini-segments for each marker (by default we create 20 segments, each containing at least 50 markers, if the creation of 20 segments in each we have 50 markers is impossible we do not create mini-segments). After this process is done, we loop over the mini-segments, pick a random marker and go through the mini-segments by picking the nearest marker after taking a step (default is 0,5 cM) downstream and upstream the mini-segments.</p></li>
+</ul>
+<div id="by-hotspots" class="section level3">
+<h3>2.1 By Hotspots</h3>
+<pre class="r"><code>submaps2 &lt;- Fantasio(bedmatrix=x.me, segments=&quot;Hotspot&quot;, n=5, verbose=FALSE, list.id = &quot;all&quot;) </code></pre>
+</div>
+<div id="by-hotspots-by-segments" class="section level3">
+<h3>2.2 By Hotspots by Segments</h3>
+<pre class="r"><code>submaps3 &lt;- Fantasio(bedmatrix=x, segments=&quot;Hotspots&quot;, n=100, n.cores=20, recap.by.segments=TRUE, n.consecutive.marker=1, list.id = &quot;all&quot;)</code></pre>
+</div>
+<div id="by-distance" class="section level3">
+<h3>2.3 By Distance</h3>
+<pre class="r"><code>submaps4 &lt;- Fantasio(bedmatrix=x.me, segments=&quot;Distance&quot;, n=5, verbose=FALSE, list.id = &quot;all&quot;)</code></pre>
+</div>
+<div id="how-to-use-the-segment.option-argument" class="section level3">
+<h3>2.4 How to use the segment.option argument</h3>
+<p>In order to use the <code>segment.option</code> argument you need to pass a list of arguments, each variable names in the list must be an argument name in the function. The function that will be called is either <code>createsSegmentsListBySnps</code> if <code>segments</code> argument is equal to “Distance” or <code>createSegmentsListByHotspots</code>if <code>segments</code> argument is equal to “Hotspots” and the arguments list will be pass to it.</p>
+<pre class="r"><code>l &lt;- list(number_of_marker=50) #default is 0
+submaps5 &lt;- Fantasio(bedmatrix=x, segments=&quot;Hotspots&quot;, segment.options=l, n=5, recap.by.segments=TRUE, list.id = &quot;all&quot;)</code></pre>
+</div>
+</div>
+<div id="step-by-step-usage-of-the-package-fantasio" class="section level2">
+<h2>3. Step by step usage of the package Fantasio</h2>
+<div id="by-hotspots-method" class="section level3">
+<h3>3.1 “By hotspots” method</h3>
+<div id="creation-of-the-segments-list" class="section level4">
+<h4>3.1.1 Creation of the segments list</h4>
+<p>We will now create segments, which will be use to create the submaps later, further explication below, for now use this command :</p>
+<pre class="r"><code>s &lt;- createSegmentsListByHotspots(x.me)</code></pre>
+<pre><code>## You are currently using version hg19 of hotspot
+## Gathering all hotspots for the genome : ......................
+## Gathering all the genome&#39;s markers : ......................
+## Finding which markers are between two hotspots : ......................</code></pre>
+<p>This function creates a list of chromosomes, in each, you have a list of several segments created thanks to the hotspots file given in argument (files are given with the package), in each segments you have SNPs index.</p>
+<p>You can watch a summary of what was done with :</p>
+<pre class="r"><code>segmentsListSummary(s)</code></pre>
+<pre><code>##    chromosome number_of_segments number_of_markers
+## 1           1                904             48532
+## 2           2                895             52722
+## 3           3                750             43507
+## 4           4                702             39040
+## 5           5                721             39933
+## 6           6                719             42184
+## 7           7                564             34754
+## 8           8                589             36417
+## 9           9                563             30276
+## 10         10                669             33427
+## 11         11                537             31255
+## 12         12                601             31039
+## 13         13                475             24595
+## 14         14                401             20926
+## 15         15                383             19098
+## 16         16                429             19028
+## 17         17                374             16052
+## 18         18                442             19496
+## 19         19                217             10397
+## 20         20                384             16228
+## 21         21                225              9301
+## 22         22                207              9379</code></pre>
+<p>This function creates a dataframe with three colums :</p>
+<ul>
+<li>chromosome</li>
+<li>number_of_segments</li>
+<li>number_of_marker</li>
+</ul>
+</div>
+<div id="creation-of-the-submaps-and-computation" class="section level4">
+<h4>3.1.2 Creation of the submaps and computation</h4>
+<p>We will now head toward the creation of submaps using the following commands :</p>
+<pre class="r"><code>submaps &lt;- makeAllSubmapsByHotspots(x.me, 5, s, verbose=FALSE, list.id = &quot;all&quot;) </code></pre>
+<p>For the sake of clarity we have only created 5 submaps, but generally we do 100.</p>
+<p>This function will creates 5 submaps, all the parameters can be modified (use args(makeAllSubmapsByHotspots) for more informations).</p>
+<p>The variable submaps becomes an list.submaps object, you can watch the different elements of it with :</p>
+<pre class="r"><code>str(submaps) #careful it can become huge depending on your data sizes</code></pre>
+</div>
+<div id="descrition-of-the-object-submaps" class="section level4">
+<h4>3.1.3 Descrition of the object submaps</h4>
+<p>This object contains all the results of the different computation executed during the process of creating n submaps. Here is a complete description of each structure in this object :</p>
+<ul>
+<li>segments_list : the object Segments created previously</li>
+</ul>
+<pre class="r"><code>str(submaps@segments_list) #careful it can become huge depending on your data sizes</code></pre>
+<ul>
+<li>atlas : the list of all the submaps created during the process. Each element of the list is an S4 object. Depending on the method you used the object can be either an <code>snsp.matrix</code> or an <code>hotspots.matrix</code> (here we use the hotspots method). Each submaps contains 15 slots :</li>
+<li>submap : the index of each marker picked (index from the bed.matrix object)</li>
+<li>ncol : the total number of marker picked</li>
+<li>nrow : the number of individuals</li>
+<li>ped : a dataframe with all the individuals genotype</li>
+<li>map : a dataframe with all the SNPS informations</li>
+<li>epsilon : genotyping error rate</li>
+<li>delta.dist : distance between each marker in cM/bp</li>
+<li>log.emiss : log of all the emission probabilities of the hidden Markov model</li>
+<li>a : a matrix with all the a’s estimation</li>
+<li>f : a matrix with all the f’s estimation</li>
+<li>likelihood0 : a matrix with all the likehood under the null hypothesis (<span class="math inline">\(f=0\)</span>)</li>
+<li>likelihood1 : a matrix with all the likehood under the inbred hypothesis (<span class="math inline">\(f=1\)</span>)</li>
+<li>p.lrt : p value of the likelihood ratio test</li>
+<li>HBD.prob : a matrix with all the HBD probabilities computed for each individual</li>
+<li>FLOD : a matrix with all the FLOD score computed</li>
+</ul>
+<pre class="r"><code>str(submaps@atlas)</code></pre>
+<ul>
+<li>likelihood_summary : a dataframe with all the likelihood0 and likelihood1 computed over the submaps.</li>
+</ul>
+<pre class="r"><code>str(submaps@likelihood_summary)</code></pre>
+<ul>
+<li>estimation_summary : a dataframe with all the a and f computed over the submaps</li>
+</ul>
+<pre class="r"><code>str(submaps@estimation_summary)</code></pre>
+<ul>
+<li>marker_summary : a dataframe, which gives the number of marker and the number of times it has been picked,
+<ul>
+<li>number_of_time_picked</li>
+<li>number_of_marker</li>
+</ul></li>
+</ul>
+<pre class="r"><code>str(submaps@marker_summary)</code></pre>
+<ul>
+<li>submaps_summary : a dataframe which gives several informations about the a and f computed over the submaps. The dataframe contains 13 columns:
+<ul>
+<li>FID: family identifier</li>
+<li>IID: individual identifier</li>
+<li>STATUS: status (1 non-affected, 2 affected, 0 unknown)</li>
+<li>SUBMAPS: number of submaps used</li>
+<li>QUALITY: percentage of valid submaps (i.e. submaps with a &lt; 1)</li>
+<li>F_MIN: minimum f on valid submaps</li>
+<li>F_MAX: maximum f on valid submaps</li>
+<li>F_MEAN: mean f on valid submaps</li>
+<li>F_MEDIAN: median f on valid submaps (recommended to estimate f)</li>
+<li>A_MEDIAN: median a on valid submaps (recommended to estimate a)</li>
+<li>pLRT_MEDIAN: median p-value of LRT tests on valid submaps</li>
+<li>INBRED: a flag indicating if the individual is inbred (pLRT_MEDIAN &lt; 0.05) or not</li>
+<li>pLRT_&lt;0.05: number of valid submaps with a LRT (likelihood ratio test) having a p-value below 0.05</li>
+</ul></li>
+</ul>
+<pre class="r"><code>head(submaps@submap_summary)</code></pre>
+<pre><code>##         FID       IID STATUS SUBMAPS QUALITY      F_MIN      F_MAX
+## 1 HGDP00607 HGDP00607      1   5 / 5     100 0.02088305 0.02800531
+## 2 HGDP00608 HGDP00608      1   5 / 5     100 0.03774849 0.04296050
+## 3 HGDP00609 HGDP00609      1   5 / 5     100 0.03845347 0.05142789
+## 4 HGDP00610 HGDP00610      1   5 / 5     100 0.04731414 0.05397126
+## 5 HGDP00611 HGDP00611      1   1 / 5      20 0.01273263 0.01273263
+## 6 HGDP00612 HGDP00612      1   5 / 5     100 0.05512183 0.06824553
+##       F_MEAN   F_MEDIAN   A_MEDIAN  pLRT_MEDIAN INBRED pLRT_inf_0.05
+## 1 0.02482191 0.02598715 0.15191670 1.134487e-24   TRUE             5
+## 2 0.04035226 0.04032003 0.07460304 1.720375e-59   TRUE             5
+## 3 0.04355988 0.04194772 0.11711796 4.134690e-52   TRUE             5
+## 4 0.05106922 0.05087772 0.15664735 1.072055e-59   TRUE             5
+## 5 0.01273263 0.01273263 0.95887555 2.210185e-04   TRUE             1
+## 6 0.06243892 0.06162984 0.31285829 1.024974e-44   TRUE             5</code></pre>
+<ul>
+<li>HBD_recap : a dataframe, which contains a mean of all the HBD inferences for an individual and a given marker.</li>
+</ul>
+<pre class="r"><code>submaps@HBD_recap[1:10, 1:10] # an individual * marker matrix</code></pre>
+<ul>
+<li>FLOD_recap : a dataframe, which contains a mean of all the FLOD scores for an individual and a given marker.</li>
+</ul>
+<pre class="r"><code>submaps@FLOD_recap[1:10, 1:10] # an individual * marker matrix</code></pre>
+<ul>
+<li>HBD_segments : a list of dataframe, each datafram is for an individuals, each dataframe contain a list of segment which will be used for plotting</li>
+</ul>
+<pre class="r"><code>str(submaps@HBD_segments[[1]])</code></pre>
+<ul>
+<li>HFLOD : a dataframe with the value of HFLOD scores for every markers through all submaps.</li>
+</ul>
+<pre class="r"><code>str(submaps@HFLOD)</code></pre>
+<ul>
+<li>bedmatrix : the bedmatrix object</li>
+</ul>
+<pre class="r"><code>str(submaps@bedmatrix)</code></pre>
+<ul>
+<li><p>bySegments : a boolean indicating wheater the creation of summary statistics was made by segments or not</p></li>
+<li><p>unit : the unit of the marker (cM or Bp).</p></li>
+<li><p>gap : the value of the gap used to pick marker when doing submaps by Distance.</p></li>
+</ul>
+</div>
+</div>
+<div id="by-hotspot-by-segments-method" class="section level3">
+<h3>3.2 “By Hotspot” “by segments” method</h3>
+<p>We implemented a second inner method of the “By Hotspots” method. The only paramater that changes is <code>recap.by.segments</code>, it is put to TRUE. In the default “Hotspot” method the HBD probabilities and FLOD scores are computed for each marker randomly selected on each segment for the n submaps.</p>
+<p>With the “Hotspot by segment” method HBD probabilities and FLOD scores correspond to the mean of HBD probabilities and FLOD score of each marker randomly selected on a segment for the n submaps in such a way that there is only one value for a segment.</p>
+<div id="creation-of-the-segments-list-1" class="section level4">
+<h4>3.2.1 Creation of the segments list</h4>
+<p>We use the same segment list that is used before (s).</p>
+</div>
+<div id="creation-of-the-submaps-and-computation-1" class="section level4">
+<h4>3.2.2 Creation of the submaps and computation</h4>
+<p>As said before the only argument that changes is “recap.by.segments”, it is put to TRUE.</p>
+<pre class="r"><code>submaps0 &lt;- makeAllSubmapsByHotspots(x.me, 5, s, verbose=FALSE, recap.by.segments = TRUE, list.id = &quot;all&quot;)</code></pre>
+</div>
+</div>
+<div id="by-distance-method" class="section level3">
+<h3>3.3 “By Distance” method</h3>
+<div id="creation-of-the-segments-list-2" class="section level4">
+<h4>3.3.1 Creation of the segments list</h4>
+<p>We will now create segments, which will be use to create the submaps later :</p>
+<pre class="r"><code>s1 &lt;- createSegmentsListBySnps(x.me)</code></pre>
+<pre><code>## Finding segments for the genome : .......................
+## Finding which markers are between two segments: .......................
+## Finding mini segments .......................</code></pre>
+<p>This function creates a list of chromosomes, in each, you have a list of several segments created thanks to the the gaps between markers, the value of the gap is given in argument, in each segments you have SNPS index. The function creates an object which will contains three slots :</p>
+<ul>
+<li>gap : the value of the gap</li>
+<li>unit : the unit of the markers (“cM” or “Bp”)</li>
+<li>snps.segments : the list of segments</li>
+</ul>
+<p>You can watch a summary of what was done with :</p>
+<pre class="r"><code>segmentsListSummary(s1)</code></pre>
+<p>This function creates a dataframe with three colums :</p>
+<ul>
+<li>chromosome</li>
+<li>number_of_segments</li>
+<li>number_of_marker</li>
+</ul>
+</div>
+<div id="creation-of-the-submaps-and-computation-2" class="section level4">
+<h4>3.3.2 Creation of the submaps and computation</h4>
+<p>We will now head toward the creation of submaps using the following commands :</p>
+<pre class="r"><code>submaps1 &lt;- makeAllSubmapsBySnps(x.me, 5, s1, verbose=FALSE, list.id = &quot;all&quot;)</code></pre>
+<p>The variable submaps becomes an list.submaps object, you can watch the different elements of it with :</p>
+<pre class="r"><code>str(submaps1) #careful it can become huge depending on your data sizes</code></pre>
+</div>
+</div>
+</div>
+<div id="parallelism-with-the-package" class="section level2">
+<h2>4. Parallelism with the package</h2>
+<p>We implemented a paralellism method to make the creation of the submaps more efficient (we paralellised the creation of the submaps, that is to say, the selection of markers). Make sure to have a Linux environment or one that can support the usage of multiple CPU.</p>
+<p>In order to use it, use the <code>n.cores</code> argument, i.e : the number of CPU that will be used to make the differents submaps in the following functions :</p>
+<ul>
+<li>Fantasio</li>
+<li>makeAllSubmapsByHotspots</li>
+<li>makeAllSubmapsBySnps</li>
+</ul>
+<pre class="r"><code>submaps6 &lt;- Fantasio(bedmatrix=x.me, segments=&quot;Hotspot&quot;, n=5, verbose=FALSE, n.cores=10, list.id = &quot;all&quot;)</code></pre>
+</div>
+<div id="plotting" class="section level2">
+<h2>5. Plotting</h2>
+<div id="hbd-plot-for-a-chromosome" class="section level3">
+<h3>5.1 HBD plot for a chromosome</h3>
+<pre class="r"><code>HBD.plot.chr(submaps, chr=20)</code></pre>
+<p><img src="steps_files/figure-html/fig1-1.png" width="768" /></p>
+</div>
+<div id="hbd-plot-for-an-individual" class="section level3">
+<h3>5.2 HBD plot for an individual</h3>
+<pre class="r"><code>HBD.plot.id(submaps, individual.id = &quot;HGDP00649&quot;, family.id = &quot;HGDP00649&quot;)</code></pre>
+<p><img src="steps_files/figure-html/fig2-1.png" width="768" /></p>
+</div>
+<div id="hflod-manhattan-plot" class="section level3">
+<h3>5.3 HFLOD manhattan plot</h3>
+<pre class="r"><code>HFLOD.manhattan.plot(submaps)</code></pre>
+<p><img src="steps_files/figure-html/fig3-1.png" width="960" /></p>
+<ul>
+<li>The red lines that you see is the value of alpha for the markers.</li>
+</ul>
+</div>
+<div id="hflod-for-a-chromosome" class="section level3">
+<h3>5.4 HFLOD for a chromosome</h3>
+<pre class="r"><code>HFLOD.plot.chr(submaps, chr=20)</code></pre>
+<p><img src="steps_files/figure-html/fig4-1.png" width="768" /></p>
+<ul>
+<li>As you can see you have a red line plotted, it gives the moving average of the HFLOD, calculated on moving windows of 50 markers with the rollmean function of the R package zoo. This allows checking the consistency of HFLOD calculations (i.e. checking the fact that a high FLOD score is not due to one submap only). A moving average is computed to remove the impact of a submap with a false positive signal.</li>
+</ul>
+</div>
+</div>
+
+<p>Copyright &copy; 2018 INSERM. All rights reserved.</p>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
